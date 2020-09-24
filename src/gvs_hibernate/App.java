@@ -13,7 +13,7 @@ public class App {
         // Выводим все строки в БД
         session.beginTransaction();
         System.out.println("Изначальное состояние БД:");
-        printAll((List<PhonebookRecord>) session.createCriteria(PhonebookRecord.class).list());
+        printAll(session.createCriteria(PhonebookRecord.class).list());
         session.getTransaction().commit();
 
         // Удаляем запись по фамилии
@@ -34,7 +34,7 @@ public class App {
         // Выводим все строки в БД
         session.beginTransaction();
         System.out.println("Состояние после:");
-        printAll((List<PhonebookRecord>) session.createCriteria(PhonebookRecord.class).list());
+        printAll(session.createCriteria(PhonebookRecord.class).list());
         session.getTransaction().commit();
 
         // Изменение записи
@@ -50,7 +50,7 @@ public class App {
         // Выводим все строки в БД
         session.beginTransaction();
         System.out.println("Состояние после:");
-        printAll((List<PhonebookRecord>) session.createCriteria(PhonebookRecord.class).list());
+        printAll(session.createCriteria(PhonebookRecord.class).list());
         session.getTransaction().commit();
 
         session.close();
@@ -58,9 +58,7 @@ public class App {
     }
 
     private static void printAll(List<PhonebookRecord> records) {
-        records.forEach((record) -> {
-            System.out.println(record);
-        });
+        records.forEach(System.out::println);
         System.out.println("");
     }
 }
